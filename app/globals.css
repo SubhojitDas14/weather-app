@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #0f172a;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(99, 102, 241, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glassmorphism {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.weather-card {
+  @apply glassmorphism rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl hover:border-indigo-500/50;
+}
+
+.weather-metric {
+  @apply text-center py-4;
+}
+
+.metric-value {
+  @apply text-4xl font-bold text-indigo-400 mt-2;
+}
+
+.metric-label {
+  @apply text-slate-400 text-sm uppercase tracking-wide;
+}
+
+.forecast-item {
+  @apply glassmorphism rounded-xl p-4 text-center transition-all duration-300 hover:scale-105 hover:border-indigo-500/50;
+}
+
+.animated-bg-sunny {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #fbbf24 100%);
+  animation: sunny-glow 6s ease-in-out infinite;
+}
+
+.animated-bg-rainy {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 50%, #64748b 100%);
+  animation: rain-pulse 4s ease-in-out infinite;
+}
+
+.animated-bg-cloudy {
+  background: linear-gradient(135deg, #0f172a 0%, #475569 50%, #64748b 100%);
+  animation: cloud-drift 8s ease-in-out infinite;
+}
+
+.animated-bg-stormy {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #0f172a 100%);
+  animation: storm-flash 5s ease-in-out infinite;
+}
+
+@keyframes sunny-glow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes rain-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes cloud-drift {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes storm-flash {
+  0%,
+  100% {
+    filter: brightness(0.9);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
